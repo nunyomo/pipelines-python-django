@@ -31,7 +31,6 @@ steps:
     python -m pip install --upgrade pip setuptools wheel django
     pip install -r requirements.txt
     pip install unittest-xml-reporting
-    conda install -n myEnvironment scipy
   displayName: 'Install prerequisites'
 
 - script: |
@@ -39,11 +38,6 @@ steps:
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
   condition: succeededOrFailed()
   displayName: 'Run tests'
-  
-- script: |
-    python -m pip install flake8
-    flake8 .
-  displayName: 'Run lint tests'
 
 - script: |
     pip install pytest
